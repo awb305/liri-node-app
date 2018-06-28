@@ -1,8 +1,15 @@
 {
   "name": "liri-node-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Language Interpretation and Recognition",
+  "main": "keys.js",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7",
+    "twitter": "^1.7.1",
+    "request":"2.87.0",
+    "dotenv": "6.0.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/awb305/liri-node-app.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Andrew Bass",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/awb305/liri-node-app/issues"
