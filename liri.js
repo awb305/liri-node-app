@@ -9,18 +9,17 @@ function Spotify(obj){
 }
 
 
-//var spotify = new Spotify(keys.spotify);
 
 
 let command = process.argv[2];
-let value = process.argv[3];
+let value = process.argv[3].toString();
 
 
 let twitterBot = () => {
     
     let Twitter = require("twitter");
     var client = new Twitter(keys.twitter);
-
+    
     debugger;
     
     let params = {
@@ -29,14 +28,34 @@ let twitterBot = () => {
     }
     client.get('statuses/user_timeline', params, function(error, tweets, response){
         if(!error){
-
+            
             tweets.forEach(element => {
-                    console.log(element.text); 
+                console.log(element.text); 
             });
         }else{
             console.log(error);
         }
     });
+    
+}
+
+let spotifyBot = (value) => {
+    
+    let Spotify = require('node-spotify-api');
+    let spotify = new Spotify(keys.spotify);
+    
+    spotify.search({ type: 'track', query: value, limit: 1 }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+    
+      console.log("Artist: " + data.tracks.items[0].artists[0].name); 
+      console.log("Song Name: " + data.tracks.items[0].name);
+      console.log("Preview link: " + data.tracks.items[0].preview_url);
+      console.log("Album: " + data.tracks.items[0].album.name);
+      });
+
+
 
 }
 
